@@ -1,7 +1,7 @@
 'use strict';
 
 var paths = {
-  js: ['*.js', 'app/models/*.js', 'app/test/*.js', '!bower_components/**', '!node_modules/**']
+  js: ['*.js', 'app/models/*.js', 'app/test/*.js', '!node_modules/**'] //'!bower_components/**', 
 };
 
 module.exports = function(grunt) {
@@ -36,7 +36,7 @@ module.exports = function(grunt) {
         options: {
           args: [],
           ignore: ['node_modules/**'],
-          ext: 'js,html',
+          ext: 'js',
           nodeArgs: ['--debug'],
           delayTime: 1,
           cwd: __dirname
@@ -59,8 +59,19 @@ module.exports = function(grunt) {
     //       }
     //     ]
     //   },
-    //   src: ['packages/**/server/tests/**/*.js']
+    //   src: ['app/tests/*.js']
     // },
+
+    mochaTest: {
+      //test: {
+        options: {
+          reporter: 'spec',
+          clearRequireCache: true
+        },
+        src: ['app/tests/*.js']
+      //},
+    },
+
     env: {
       test: {
         NODE_ENV: 'test'
@@ -80,7 +91,7 @@ module.exports = function(grunt) {
   grunt.registerTask('default', ['hook']);
 
   //Test task.
-  grunt.registerTask('test', ['env:test', 'mochaTest', 'karma:unit']);
+  grunt.registerTask('test', ['env:test', 'mochaTest']);
 
   // For Heroku users only.
   // Docs: https://github.com/linnovate/mean/wiki/Deploying-on-Heroku
