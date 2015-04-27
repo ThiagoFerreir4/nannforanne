@@ -33,7 +33,7 @@ $ grunt
 To start the project on test mode (run the mochajs tests)
 
 ```sh
-$ grunt
+$ grunt test
 ```
 
 [Node.js]:https://nodejs.org/
