@@ -55,6 +55,7 @@ var UserSchema = new Schema({
   verified: { type: Number, default: 0 },
   resetPasswordToken: { type: String },
   resetPasswordExpires: { type: Date },
+  salt: {type: String},
   facebook: {},
   twitter: {},
   github: {},
